@@ -53,7 +53,6 @@ export interface StoreRouterConfig<
   T extends BaseRouterStoreState = SerializedRouterStateSnapshot
 > {
   stateKey?: StateKeyOrSelector<T>;
-  serializer?: new (...args: any[]) => RouterStateSerializer;
   /**
    * By default, ROUTER_NAVIGATION is dispatched before guards and resolvers run.
    * Therefore, the action could run too soon, for example
@@ -67,6 +66,7 @@ export interface StoreRouterConfig<
    * Set to `Full` to use the `DefaultRouterStateSerializer` and to set the angular router events as payload.
    * Set to `Minimal` to use the `MinimalRouterStateSerializer` and to set a minimal router event with the navigation id and url as payload.
    */
+  serializer?: new (...args: any[]) => RouterStateSerializer;
   routerState?: RouterState;
 }
 
